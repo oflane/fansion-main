@@ -1,0 +1,15 @@
+{
+  "id": "0002",
+  "applyNo": "0002",
+  "applyMail": "zhang2@fast.com",
+  "applyDate": "2017-07-08",
+  "applyStatus": 1,
+  "name":"张三2",
+  "idNo":"153638198605074002",
+  "gender":"male",
+  "birth":"1986-05-07",
+  "email":"lisi2@slow.com",
+  "phone":13110660762,
+  "dept":"1",
+  "dept__label":"开发部"
+}

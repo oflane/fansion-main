@@ -1,0 +1,85 @@
+[
+  {
+    "id": "index",
+    "location": "/index",
+    "icon": "fa fa-home",
+    "name": "首页"
+  },
+  {
+    "location": "/demo",
+    "name": "演示",
+    "children": [
+      {
+        "location": "/demo/test/test-page",
+        "name": "组件测试",
+        "icon": "",
+        "select": false
+      },
+      {
+        "location": "/demo/fac/page/simple-form",
+        "name": "开发表单",
+        "icon": ""
+      },
+      {
+        "location": "/demo/fac/config/page-simple-form",
+        "name": "UI配置－简单表单",
+        "icon": ""
+      },
+      {
+        "location": "/demo/fac/config/page-simple-table",
+        "name": "UI配置－简单列表",
+        "icon": ""
+      },
+      {
+        "location": "/demo/fac/config/page-simple-table-page",
+        "name": "UI配置－分页列表",
+        "icon": ""
+      },
+      {
+        "location": "/demo/fac/config/page-tabs",
+        "name": "UI配置－页签示例",
+        "icon": ""
+      },
+      {
+        "location": "/demo/fac/meta/tpl-simple-table",
+        "name": "模板配置－分页列表",
+        "icon": ""
+      }
+    ]
+  },
+  {
+    "location": "/fac-demo",
+    "name": "快速应用",
+    "children": [
+      {
+        "location": "/fac/test.test-user.ofm-simple-table",
+        "name": "用户管理",
+        "menustatus": "Y",
+        "children": null,
+        "icon": ""
+      }
+    ],
+    "icon": "appIcon icon-C-salestogether",
+    "id": ""
+  },
+  {
+    "location": "/fasm",
+    "name": "系统配置",
+    "children": [
+      {
+        "location": "/meta/default/meta-group-list/com.oflane.fasp.ofmodel.entity.of_entity_meta",
+        "name": "模型配置",
+        "children": null,
+        "icon": "",
+        "id": "HR010000"
+      },
+      {
+        "location": "/meta/default/meta-list/com.oflane.fac.model.fac_meta",
+        "name": "UI设置",
+        "children": null,
+        "icon": "",
+        "id": "HR010001"
+      }
+    ]
+  }
+]

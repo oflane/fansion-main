@@ -1,0 +1,14 @@
+{
+  "applyNo": "0001",
+  "applyMail": "zhangsan@fast.com",
+  "applyDate": "2017-07-08",
+  "applyStatus": 1,
+  "name":"李四",
+  "idNo":"153638198605074119",
+  "gender":"male",
+  "birth":"1986-05-07",
+  "email":"lisi@slow.com",
+  "phone":13110660763,
+  "dept":"1",
+  "dept__label":"开发部"
+}

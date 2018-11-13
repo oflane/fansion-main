@@ -1,0 +1,49 @@
+{
+  "result": [
+    {
+      "applyNo": "0001",
+      "applyMail": "zhangsan1@fast.com",
+      "applyDate": "2017-07-08",
+      "applyStatus": 1,
+      "name": "张三1",
+      "idNo": "153638198605074119",
+      "gender": "male",
+      "birth": "1986-05-07",
+      "email": "lisi@slow.com",
+      "phone": 13110660763,
+      "dept": "1",
+      "dept__label": "开发部"
+    },
+    {
+      "applyNo": "0002",
+      "applyMail": "zhangsan2@fast.com",
+      "applyDate": "2017-07-08",
+      "applyStatus": 1,
+      "name": "张三2",
+      "idNo": "153638198605074119",
+      "gender": "male",
+      "birth": "1986-05-07",
+      "email": "lisi@slow.com",
+      "phone": 13110660763,
+      "dept": "1",
+      "dept__label": "开发部"
+    },
+    {
+      "applyNo": "0003",
+      "applyMail": "zhangsan3@fast.com",
+      "applyDate": "2017-07-08",
+      "applyStatus": 1,
+      "name": "张三3",
+      "idNo": "153638198605074119",
+      "gender": "male",
+      "birth": "1986-05-07",
+      "email": "lisi@slow.com",
+      "phone": 13110660763,
+      "dept": "1",
+      "dept__label": "开发部"
+    }
+  ],
+  "number": 2,
+  "size": 20,
+  "totalElements": 23
+}
