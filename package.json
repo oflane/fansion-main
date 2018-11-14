@@ -69,7 +69,6 @@
     "webpack-bundle-analyzer": "^3.0.3",
     "copy-webpack-plugin": "^4.6.0",
     "friendly-errors-webpack-plugin": "^1.7.0",
-    "uglifyjs-webpack-plugin": "^2.0.1",
     "eventsource-polyfill": "^0.9.6",
     "file-loader": "^1.1.10",
     "connect-history-api-fallback": "^1.5.0",

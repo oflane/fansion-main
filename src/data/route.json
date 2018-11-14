@@ -1,22 +1,4 @@
 [
   "/->!/index",
-  "/index",
-  "/demo/test/test-page",
-  "/demo/fac/page/simple-form",
-  "$/demo/fac/config/page-simple-form",
-  "$/demo/fac/config/page-simple-table",
-  "$/demo/fac/config/page-simple-table-detail/:id",
-  "$/demo/fac/config/page-simple-table-page",
-  "$/demo/fac/config/page-tabs",
-  "$/demo/fac/meta/tpl-simple-table",
-  "$/demo/fac/meta/tpl-simple-form/:id",
-  "/fac/fac-test-table->$/fac/fac-test-table-meta",
-  "/fac/test.test-user.ofm-simple-table->$/fac/test.test-user.ofm-simple-table",
-  "/fac/test.test-user.ofm-simple-form/:id->$/fac/test.test-user.ofm-simple-form",
-  "/meta/default/meta-list/:type",
-  "/meta/default/meta-edit/:type/:id",
-  "/meta/default/meta-group-list/:type",
-  "/meta/default/meta-group-edit/:type/:group",
-  "/meta/ofentity/ofe-meta-edit/:type/:group",
-  "/meta/fac/fac-meta-edit/:id"
+  "/index"
 ]
