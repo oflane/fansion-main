@@ -12,7 +12,7 @@ import fac from 'fansion-fac'
 import fanui from 'fansion-ui'
 import fameta from 'fansion-meta'
 import routes from './data/route.json'
-import pages from './data/pages'
+import pageComps from './data/pages'
 import 'element-ui/lib/theme-chalk/index.css'
 window.$restContext = '/oflane'
 Vue.use(ElementUI)
@@ -21,11 +21,14 @@ Vue.use(fanui)
 Vue.use(fameta)
 Vue.config.productionTip = false
 window.vue = Vue
+// 动态路由加载url
+const routeLoader = fase.rest.getJson('/meta/find-all-names/com.oflane.fac.model.fac-meta').then(res => Array.isArray(res) ? res.map(v => '$' + v) : [])
 fase.init({
   pages: {
-    pages
+    pageComps
   },
-  routes
+  routes,
+  routeLoader
 })
 /* eslint-disable no-new */
 new Vue({
