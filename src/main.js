@@ -30,6 +30,9 @@ fase.init({
   routes,
   routeLoader
 })
+fase.util.setShowMessage(msg => {
+  App.$message(msg)
+})
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

@@ -24,7 +24,7 @@ else
 	  build ${i}
 	done
 fi
-cd fansion-demo
+cd fansion-main
 pwd
 if [ $# -eq 0 ]; then
     rm -rf node_modules/fansion-*
