@@ -85,15 +85,3 @@ a, a:hover {
 :focus {
   outline: none;
 }
-.pull-right {
-  float:right
-}
-.clearfix:after {
-  content: " ";
-  display: block;
-  clear: both;
-  height: 0;
-}
-.clearfix {
-  zoom: 1;
-}
