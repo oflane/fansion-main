@@ -11,6 +11,7 @@ import ElementUI from 'element-ui'
 import fac from 'fansion-fac'
 import fanui from 'fansion-ui'
 import fameta from 'fansion-meta'
+import demo from 'fansion-demo'
 import routes from './data/route.json'
 import pageComps from './data/pages'
 import 'element-ui/lib/theme-chalk/index.css'
@@ -19,19 +20,17 @@ Vue.use(ElementUI)
 Vue.use(fac)
 Vue.use(fanui)
 Vue.use(fameta)
+Vue.use(demo)
 Vue.config.productionTip = false
 window.vue = Vue
 // 动态路由加载url
-const routeLoader = fase.rest.getJson('/meta/find-all-names/com.oflane.fac.model.fac-meta').then(res => Array.isArray(res) ? res.map(v => '$' + v) : [])
+const routeLoader = '/fac/routes'
 fase.init({
-  pages: {
-    pageComps
-  },
-  routes,
-  routeLoader
+  pages: { pageComps },
+  router: { routes, routeLoader }
 })
 fase.util.setMessageComp(msg => {
-  App.$msg(msg)
+  App.$message(msg)
 })
 /* eslint-disable no-new */
 new Vue({

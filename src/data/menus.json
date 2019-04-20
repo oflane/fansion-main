@@ -52,7 +52,7 @@
     "name": "快速应用",
     "children": [
       {
-        "location": "/fac/test.test-user.ofm-simple-table",
+        "location": "/test.test-user.ofm-simple-table",
         "name": "用户管理",
         "menustatus": "Y",
         "children": null,
@@ -79,6 +79,11 @@
         "children": null,
         "icon": "",
         "id": "HR010001"
+      },
+      {
+        "name": "应用建模",
+        "img": "static/images/index/defdoc.png",
+        "url": "/fasm.fasm-base.application-modeling"
       }
     ]
   }
