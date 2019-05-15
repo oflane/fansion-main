@@ -57,6 +57,13 @@
         "menustatus": "Y",
         "children": null,
         "icon": ""
+      },
+      {
+        "location": "/zxasdf",
+        "name": "用户管理1",
+        "menustatus": "Y",
+        "children": null,
+        "icon": ""
       }
     ],
     "icon": "appIcon icon-C-salestogether",
@@ -83,7 +90,7 @@
       {
         "name": "应用建模",
         "img": "static/images/index/defdoc.png",
-        "url": "/fasm.fasm-base.application-modeling"
+        "location": "/fasm.fasm-base.application-modeling"
       }
     ]
   }
