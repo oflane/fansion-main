@@ -11,7 +11,6 @@ import fac from 'fansion-fac'
 import fanui from 'fansion-ui'
 import fameta from 'fansion-meta'
 import demo from 'fansion-demo'
-import fasm from 'fansion-func-fasm'
 import routes from './data/route.json'
 import pageComps from './data/pages'
 import 'element-ui/lib/theme-chalk/index.css'
@@ -25,7 +24,6 @@ Vue.use(fac)
 Vue.use(fanui)
 Vue.use(fameta)
 Vue.use(demo)
-Vue.use(fasm)
 Vue.use(ElementUI)
 Vue.use(VueRouter)
 Vue.config.productionTip = false
