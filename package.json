@@ -13,11 +13,11 @@
     "build": "cross-env NODE_ENV=production node build/build.js"
   },
   "dependencies": {
-    "fansion-base": "../fansion-base",
-    "fansion-demo": "../fansion-demo",
-    "fansion-fac": "../fansion-fac",
-    "fansion-meta": "../fansion-meta",
-    "fansion-ui": "../fansion-ui"
+    "fansion-base": "^1.0.0",
+    "fansion-demo": "^1.0.0",
+    "fansion-fac": "^1.0.0",
+    "fansion-meta": "^1.0.0",
+    "fansion-ui": "^1.0.0"
   },
   "devDependencies": {
     "element-ui": "^2.13.1",
