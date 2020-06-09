@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "A Vue.js project,fansion项目的模块的开发的主模块",
   "author": "yaboocn <yaboocn@qq.com>",
+  "publishConfig": {
+    "registry": "http://localhost:8081/repository/fansion-repo/"
+  },
   "files": [
     "lib",
     "src"
