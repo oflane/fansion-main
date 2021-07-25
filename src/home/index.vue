@@ -8,7 +8,7 @@
       <h2>{{item.title}}</h2>
       <el-col :xs="8" :sm="6" :md="6" :lg="6" v-for="col in item.cols" :key="col.name">
         <router-link :to="col.url" class="unit">
-          <img :src="col.img">
+          <img :src="col.img" alt="col.name">
         </router-link>
         <h4>{{col.name}}</h4>
       </el-col>
@@ -29,12 +29,12 @@
   const storage = fase.storage
   const SCROLL_HEIGHT_KEY = 'home-scroll-height-key'
   const cacheScrollTop = () => {
-    let height = document.body.scrollTop
+    const height = document.body.scrollTop
     storage.set(SCROLL_HEIGHT_KEY, height)
   }
 
   const restoreScroll = () => {
-    let h = storage.get(SCROLL_HEIGHT_KEY)
+    const h = storage.get(SCROLL_HEIGHT_KEY)
     if (h) {
       document.body.scrollTop = Number(h)
     }
@@ -114,10 +114,8 @@
       margin-top: 0;
       margin-bottom: 28px;
       text-align: center;
-      font-family: 'Microsoft Yahei';
+      font-family: 'Microsoft Yahei',serif,sans-serif,cursive;
       font-size: 18px;
     }
   }
-
 </style>
-

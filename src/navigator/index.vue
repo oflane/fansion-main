@@ -26,9 +26,9 @@
       }
     },
     created () {
-      let _self = this
+      const vm = this
       Object.defineProperty(Vue.prototype, '$navigator', {
-        get () { return _self }
+        get () { return vm }
       })
     },
     methods: {

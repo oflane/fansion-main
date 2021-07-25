@@ -11,6 +11,7 @@ if (!process.env.NODE_ENV) {
 }
 
 const options = opt.getOptions('development')
+const deps = options.modules
 const config = opt.server
 // default port where dev server listens for incoming traffic
 const port = process.env.PORT || config.port
@@ -59,6 +60,11 @@ server.use(hotMiddleware)
 // serve pure static assets
 let staticPath = path.posix.join('/', options.assertPath)
 server.use(staticPath, express.static('./static', {maxAge: 1000 * 60 * 60}))
+if(deps && deps.length &&　deps.length > 0) {
+  for(let i = 0; i < deps.length; i++){
+    server.use('/' + options.jsFolder + '/' +deps[i]+'/', express.static('./node_modules/'+deps[i]+'/lib/', {maxAge: 1000 * 60 * 60}))
+  }
+}
 
 let uri = 'http://localhost:' + port
 

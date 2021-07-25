@@ -79,16 +79,16 @@ module.exports = {
         test: /\.less$/,
         loaders: ['style-loader', 'css-loader', 'less-loader']
       },
-      {
-        test: /\.html$/,
-        loader: 'html-loader?minimize=false'
-      },
+      // {
+      //   test: /\.html$/,
+      //   loader: 'html-loader?minimize=false'
+      // },
       {
         test: /\.otf|ttf|woff2?|eot(\?\S*)?$/,
         loader: 'url-loader',
         query: {
           limit: 10000,
-          name: join(options.assertPath, '[name].[hash:7].[ext]')
+          name: join(options.jsFolder +'/'+ options.assertPath, '[name].[hash:7].[ext]')
         }
       },
       {
@@ -96,7 +96,7 @@ module.exports = {
         loader: 'url-loader',
         query: {
           limit: 10000,
-          name: join(options.assertPath, '[name].[hash:7].[ext]')
+          name: join(options.jsFolder +'/'+ options.assertPath, '[name].[hash:7].[ext]')
         }
       },
       {
@@ -104,7 +104,7 @@ module.exports = {
         loader: 'url-loader',
         query: {
           limit: 10000,
-          name: join(options.assertPath, '[name].[hash:7].[ext]')
+          name: join(options.jsFolder +'/'+ options.assertPath, '[name].[hash:7].[ext]')
         }
       }
     ]

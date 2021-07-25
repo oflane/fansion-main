@@ -20,10 +20,12 @@
     "fansion-demo": "^1.0.0",
     "fansion-fac": "^1.0.0",
     "fansion-meta": "^1.0.0",
-    "fansion-ui": "^1.0.0"
+    "fansion-ui": "^1.0.0",
+    "fansion-tib": "^1.0.0",
+    "fasm-fw": "^1.0.0"
   },
   "devDependencies": {
-    "element-ui": "^2.13.1",
+    "element-ui": "^2.15.2",
     "babel-core": "^6.26.3",
     "babel-cli": "^6.26.0",
     "babel-eslint": "^10.1.0",
@@ -34,7 +36,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-2": "^6.24.1",
     "babel-register": "^6.26.0",
-    "cross-env": "^7.0.2",
+    "cross-env": "^7.0.3",
     "eslint": "^6.8.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-friendly-formatter": "^4.0.1",
@@ -44,6 +46,9 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
+    "eslint-plugin-vue": "^6.2.2",
+    "@vue/cli-plugin-eslint": "^4.3.1",
+    "@vue/eslint-config-standard": "^5.1.2",
     "vue": "^2.6.11",
     "vue-router": "^3.1.6",
     "vue-loader": "^15.9.1",

@@ -1,6 +1,6 @@
 const mock = require('./options').mock
 const express = require('express')
-const proxy = require('http-proxy-middleware')
+const {createProxyMiddleware} = require('http-proxy-middleware')
 const fetch = require('node-fetch')
 const mockContext = '/mock'
 const mockPath = './mock'
@@ -75,10 +75,10 @@ module.exports = function (app) {
   }
   if (Array.isArray(m.proxy)) {
     m.proxy.forEach(function (p) {
-      app.use(proxy(p.path, p.options))
+      app.use(createProxyMiddleware(p.path, p.options))
     })
   } else {
     console.log(JSON.stringify(m.proxy))
-    app.use(proxy(m.proxy.path, m.proxy.options))
+    app.use(createProxyMiddleware(m.proxy.path, m.proxy.options))
   }
 }

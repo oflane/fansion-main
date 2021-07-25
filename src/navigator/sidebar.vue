@@ -1,15 +1,14 @@
 <template>
   <div class="siderbar">
     <div style="height:41px;"></div>
-    <el-menu ref="sidebarMenu" class="sidebar-menu"
-      :router="true"
+    <el-menu ref="sidebarMenu" class="sidebar-menu" :router="true"
       :default-active="path" >
       <template v-for="o in data">
-        <el-menu-item :index="o.location" v-if="!o.children || o.children.length==0"><i :class="o.icon" v-if="o.icon!=null"></i>{{o.name}}<i class="pull-right el-icon-document"></i></el-menu-item>
-        <el-submenu :index="o.location" v-if="o.children && o.children.length > 0" >
+        <el-menu-item :index="o.location" v-if="!o.children || o.children.length === 0" :key="o.location"><i :class="o.icon" v-if="o.icon!=null"></i>{{o.name}}<i class="pull-right el-icon-document"></i></el-menu-item>
+        <el-submenu :index="o.location" v-if="o.children && o.children.length > 0" :key="o.location">
           <template slot="title">{{o.name}}</template>
           <template v-for="i in o.children">
-          <el-menu-item :index="i.location"><i class="fa fa-circle-o"/> {{i.name}}</el-menu-item>
+          <el-menu-item :index="i.location" :key="i.location"><i class="fa fa-circle-o"/> {{i.name}}</el-menu-item>
           </template>
         </el-submenu>
       </template>
@@ -20,14 +19,14 @@
   import MenuData from '~/data/menus.json'
   const reg = /(\/.*)(\?.*)?/
   function openApp (vm) {
-    let paths = [{ name: '首页', path: '/index' }]
+    const paths = [{ name: '首页', path: '/index' }]
     if (vm.path !== '/index') {
-      let sb = vm.$refs['sidebarMenu']
-      let citem = sb.items[vm.path]
+      const sb = vm.$refs.sidebarMenu
+      const citem = sb.items[vm.path]
       if (!citem) {
         return
       }
-      let ls = citem.indexPath
+      const ls = citem.indexPath
       ls.forEach((n, i) => {
         if (i !== ls.length - 1) {
           paths.push({ name: sb.submenus[n].$el.children[0].innerText })
@@ -40,7 +39,7 @@
   }
   export default {
     data: function () {
-      let path = reg.exec(window.location.hash)[1]
+      const path = reg.exec(window.location.hash)[1]
       return {
         data: MenuData,
         path
@@ -53,7 +52,7 @@
       }
     },
     watch: {
-      '$route': 'refreshPath'
+      $route: 'refreshPath'
     }
   }
 </script>
@@ -63,7 +62,7 @@
     min-height: 100%;
     width: 200px;
     position: absolute;
-    top: 0px;
+    top: 0;
     border-right: 3px solid #999999;
     background-color: #eeeff1;
     i{
@@ -88,7 +87,7 @@
     width: 100%;
     border-top: none;
     border-left: none;
-    margin: 0em;
+    margin: 0;
     >.el-menu-item {
       height: 42px;
       border-top: 1px solid #ffffff;
@@ -103,7 +102,7 @@
       -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff',EndColorStr='#efeff0')";
       font-size: 1em;
       line-height: 38px;
-      padding: 0em .25em;
+      padding: 0 .25em;
     }
     >.el-submenu{
       &.is-opened{
@@ -129,8 +128,8 @@
         font-weight: normal;
         font-size: 1em;
         line-height: 38px;
-        padding: 0em .25em;
-        margin-bottom: 0px;
+        padding: 0 .25em;
+        margin-bottom: 0;
         text-shadow: none;
         text-transform: none;
       }
@@ -142,6 +141,4 @@
       }
     }
   }
-
-
 </style>

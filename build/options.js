@@ -3,7 +3,9 @@
  */
 module.exports.getOptions = function(env) {
   return {
-    assertPath: 'static'
+    jsFolder: 'web',
+    assertPath: 'static',
+    modules: ['fansion-base', 'fansion-fac', 'fansion-ui', 'fansion-meta', 'fansion-tib', 'fasm-fw']
   }
 }
 module.exports.server = {

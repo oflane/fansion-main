@@ -26,7 +26,7 @@
         <div class="devider-vertical visible-lg"></div>
         <el-breadcrumb separator="/">
           <template v-for="(p, i) in paths" >
-            <el-breadcrumb-item :to="{ path: p.path }"><i class="fa fa-home" v-if="i==0"/> {{p.name}}</el-breadcrumb-item>
+            <el-breadcrumb-item :to="{ path: p.path }" :key="p.path"><i class="fa fa-home" v-if="i==0"/> {{p.name}}</el-breadcrumb-item>
           </template>
         </el-breadcrumb>
       </el-col>
@@ -37,12 +37,12 @@
 <script>
   function getIcon (type) {
     switch (type) {
-      case 'success':
-        return 'success'
-      case 'warning':
-        return 'warning'
-      case 'error':
-        return 'error'
+    case 'success':
+      return 'success'
+    case 'warning':
+      return 'warning'
+    case 'error':
+      return 'error'
     }
     return 'info'
   }
@@ -59,7 +59,7 @@
     },
     methods: {
       showMessage (message, type = 'info') {
-        let icon = getIcon(type)
+        const icon = getIcon(type)
         this.message = { message, type, icon }
       },
       closeMessage () {
