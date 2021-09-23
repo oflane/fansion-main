@@ -40,10 +40,12 @@ Promise.all([
   Vue.use(fasm)
 
   // 动态路由加载url
-  const routeLoader = '/fac/routes'
+  const routeLoader = window.$routeLoader
+  const urlsLoader = window.$urlsLoader
   fase.init({
     pages: { pageComps },
-    router: { routes, routeLoader }
+    router: { routes, routeLoader },
+    urls: {urlsLoader}
   })
   /* eslint-disable no-new */
   const root = new Vue({
