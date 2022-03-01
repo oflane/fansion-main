@@ -7,16 +7,17 @@
 import App from './App'
 import routes from './data/route.json'
 import pageComps from './data/pages'
-import 'element-ui/lib/theme-chalk/index.css'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import ELEMENT from 'element-ui'
+import 'fansion-ui/lib/fansion-ui.css'
 
 Vue.use(VueRouter)
+Vue.use(ELEMENT)
 
 Vue.config.productionTip = false
 window.vue = Vue
 Promise.all([
-  import('element-ui'),
   import('fansion-base'),
   import('fansion-fac'),
   import('fansion-ui'),
@@ -24,14 +25,12 @@ Promise.all([
   import('fansion-tib'),
   import('fasm-fw')
 ]).then(res => {
-  const element = res[0].default
   const fase = res[1].default
   const fac = res[2].default
   const fui = res[3].default
   const fmeta = res[4].default
   const ftib = res[5].default
   const fasm = res[6].default
-  Vue.use(element)
   Vue.use(fase)
   Vue.use(fac)
   Vue.use(fui)
@@ -51,6 +50,7 @@ Promise.all([
   const root = new Vue({
     el: '#app',
     router: fase.route.getRouter(),
+    store: fase.store.getStore(),
     template: '<App/>',
     components: { App },
     render: h => h(App)

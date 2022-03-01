@@ -8,32 +8,51 @@ const webpackDev = require('./webpack.dev');
 const merge = require('webpack-merge');
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 function addJsFolder(path) {
   return options.jsFolder + "/" + path
 }
 let webpackDist = merge(webpackDev, {
   mode: mode,
-  entry: {app: ['./src/main.js']},
+  entry: {fansion: ['./src/main.js']},
   externals: {
     vue: 'Vue',
-    // 'element-ui': 'ELEMENT',
+    'element-ui': 'ELEMENT',
     'vue-router': 'VueRouter'
   },
+  devtool: 'none',
   optimization: {
+    minimize: true,
+    minimizer: [
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: false
+      }),
+      new OptimizeCSSAssetsPlugin({})  // use OptimizeCSSAssetsPlugin
+    ],
     splitChunks: {
-      chunks: 'async',
-      minSize: 10000,
-      maxSize: 0,
-      minChunks: 1,
+      chunks: 'all',
+      // minSize: 10000,
+      // maxSize: 0,
+      minChunks: 2,
       maxAsyncRequests: 5,
       maxInitialRequests: 3,
       automaticNameDelimiter: '~',
       name: true,
       cacheGroups: {
+        codemirror: {
+          name: 'chunk-code', // split codemirror into a single package
+          priority: 20, // the weight needs to be larger than libs and app or it will be packaged into libs or app
+          test: /[\\/]node_modules[\\/]_?codemirror(.*)/ // in order to adapt to cnpm
+        },
         default: {
           test: function (module, chunks) {
             const p = module.resource
@@ -71,6 +90,14 @@ webpackDist.plugins = [
     template: 'dist.html',
     publicPath: options.jsFolder,
     inject: true
+  }),
+  new ScriptExtHtmlWebpackPlugin({
+    // `runtime` must same as runtimeChunk name. default is `runtime`
+    inline: /runtime\..*\.js$/
+  }),
+  new MiniCssExtractPlugin({
+    filename: addJsFolder('static/[name].app.css'),
+    chunkFilename: addJsFolder('static/[name].[contenthash:12].css')  // use contenthash *
   }),
   new FriendlyErrorsPlugin(),
   new CopyWebpackPlugin(paths)

@@ -10,6 +10,7 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   mode: mode,
@@ -36,7 +37,8 @@ module.exports = {
   },
   devtool: '#cheap-module-eval-source-map',
   optimization: {
-    minimize: false
+    minimize: false,
+    noEmitOnErrors: true
   },
   module: {
     rules: [
@@ -69,15 +71,15 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loaders: ['style-loader', 'css-loader', 'postcss-loader']
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader']
       },
       {
         test: /\.scss$/,
-        loaders: ['style-loader', 'css-loader', 'sass-loader']
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
       },
       {
         test: /\.less$/,
-        loaders: ['style-loader', 'css-loader', 'less-loader']
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'less-loader']
       },
       // {
       //   test: /\.html$/,
@@ -115,7 +117,6 @@ module.exports = {
       'process.env': mode
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html',
