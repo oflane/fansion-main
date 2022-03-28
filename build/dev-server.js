@@ -1,6 +1,7 @@
 require('./check-versions')()
 const proxy = require('./dev-proxy')
-const opt = require('./options')
+const {serverConfig,getOptions} = require('./options')
+const {mappingPaths} = require('./modules')
 const opn = require('open')
 const path = require('path')
 const express = require('express')
@@ -9,14 +10,11 @@ const webpackConfig = require('./webpack.dev')
 if (!process.env.NODE_ENV) {
   process.env.NODE_ENV = 'development'
 }
-
-const options = opt.getOptions('development')
-const deps = options.modules
-const config = opt.server
+const options = getOptions('development')
 // default port where dev server listens for incoming traffic
-const port = process.env.PORT || config.port
+const port = process.env.PORT || serverConfig.port
 // automatically open browser, if not set will be false
-const autoOpenBrowser = !!config.autoOpenBrowser
+const autoOpenBrowser = !!serverConfig.autoOpenBrowser
 // Define HTTP proxies to your custom API backend
 // https://github.com/chimurai/http-proxy-middleware
 
@@ -58,13 +56,9 @@ server.use(devMiddleware)
 server.use(hotMiddleware)
 
 // serve pure static assets
-let staticPath = path.posix.join('/', options.assertPath)
-server.use(staticPath, express.static('./static', {maxAge: 1000 * 60 * 60}))
-if(deps && deps.length &&　deps.length > 0) {
-  for(let i = 0; i < deps.length; i++){
-    server.use('/' + options.jsFolder + '/' +deps[i]+'/', express.static('./node_modules/'+deps[i]+'/lib/', {maxAge: 1000 * 60 * 60}))
-  }
-}
+server.use(path.posix.join('/', options.assertPath), express.static('./static', {maxAge: 1000 * 60 * 60}))
+mappingPaths.forEach(([p, sp]) => server.use(p, express.static(sp, {maxAge: 1000 * 60 * 60})))
+
 
 let uri = 'http://localhost:' + port
 

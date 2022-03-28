@@ -10,7 +10,6 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   mode: mode,
@@ -23,7 +22,7 @@ module.exports = {
   },
   externals: {
     vue: 'Vue',
-    // 'element-ui': 'ELEMENT',
+    'element-ui': 'ELEMENT',
     'vue-router': 'VueRouter'
   },
   resolve: {
@@ -35,13 +34,13 @@ module.exports = {
       '@data': resolvePath('data')
     }
   },
-  devtool: '#cheap-module-eval-source-map',
-  optimization: {
-    minimize: false,
-    noEmitOnErrors: true
-  },
   module: {
     rules: [
+      {
+        test: /\.js$/,
+        use: ["source-map-loader"],
+        enforce: "pre"
+      },
       {
         test: /\.(js|jsx|vue)$/,
         loader: 'eslint-loader',
@@ -71,26 +70,26 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader']
+        loaders: ['style-loader', 'css-loader?sourceMap', 'postcss-loader']
       },
       {
         test: /\.scss$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+        loaders: ['style-loader', 'css-loader?sourceMap', 'sass-loader']
       },
       {
         test: /\.less$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'less-loader']
+        loaders: ['style-loader', 'css-loader?sourceMap', 'less-loader']
       },
-      // {
-      //   test: /\.html$/,
-      //   loader: 'html-loader?minimize=false'
-      // },
+      {
+        test: /\.html$/,
+        loader: 'html-loader?minimize=false'
+      },
       {
         test: /\.otf|ttf|woff2?|eot(\?\S*)?$/,
         loader: 'url-loader',
         query: {
           limit: 10000,
-          name: join(options.jsFolder +'/'+ options.assertPath, '[name].[hash:7].[ext]')
+          name: join(options.assertPath, '[name].[hash:7].[ext]')
         }
       },
       {
@@ -98,7 +97,7 @@ module.exports = {
         loader: 'url-loader',
         query: {
           limit: 10000,
-          name: join(options.jsFolder +'/'+ options.assertPath, '[name].[hash:7].[ext]')
+          name: join(options.assertPath, '[name].[hash:7].[ext]')
         }
       },
       {
@@ -106,7 +105,7 @@ module.exports = {
         loader: 'url-loader',
         query: {
           limit: 10000,
-          name: join(options.jsFolder +'/'+ options.assertPath, '[name].[hash:7].[ext]')
+          name: join(options.assertPath, '[name].[hash:7].[ext]')
         }
       }
     ]
@@ -114,7 +113,12 @@ module.exports = {
   plugins: [
     new VueLoaderPlugin(),
     new webpack.DefinePlugin({
-      'process.env': mode
+      'process.env': mode,
+      'process.env.entry': JSON.stringify(resolvePath('./src/index')),
+      'process.env.ContextData': JSON.stringify(resolvePath('./data/nav.json')),
+      'process.env.contextPath': JSON.stringify('/oflane'),
+      'process.env.routeLoader': JSON.stringify('/fac/routes'),
+      'process.env.urlsLoader': JSON.stringify('/fasm/service-info/urls')
     }),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
@@ -123,5 +127,9 @@ module.exports = {
       inject: true
     }),
     new FriendlyErrorsPlugin()
-  ]
+  ],
+  devtool: 'source-map',
+  optimization: {
+    noEmitOnErrors: true
+  }
 }

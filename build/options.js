@@ -1,15 +1,21 @@
 /*
  * Copyright(c) Oflane Software 2017. All Rights Reserved.
  */
-module.exports.getOptions = function(env) {
+//获取module模块
+const jsFolder = 'web'
+const assertPath = 'static'
+module.exports.getOptions = function() {
   return {
-    jsFolder: 'web',
-    assertPath: 'static',
-    modules: ['fansion-base', 'fansion-fac', 'fansion-ui', 'fansion-meta', 'fansion-tib', 'fasm-fw']
+    jsFolder,
+    assertPath
   }
 }
-module.exports.server = {
-  port: 9090,
+module.exports.convertJsFolder = function(path) {
+  return jsFolder + "/" + path
+}
+
+module.exports.serverConfig = {
+  port: 9999,
   autoOpenBrowser: false
 }
 module.exports.mock = {
