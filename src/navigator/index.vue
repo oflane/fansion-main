@@ -5,8 +5,8 @@
  -->
 <template>
   <div class="navigator">
-    <nav-header/>
-    <sidebar @openedApp="changeApp"/>
+    <nav-header :collapse.sync="collapse"/>
+    <sidebar @openedApp="changeApp" :collapse="collapse"/>
     <page-content ref="pageContent" :paths ="paths" :title="title">
       <slot/>
     </page-content>
@@ -22,7 +22,8 @@
     data () {
       return {
         paths: [],
-        title: '首页'
+        title: '首页',
+        collapse: false
       }
     },
     created () {
